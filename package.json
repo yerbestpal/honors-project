@@ -16,6 +16,8 @@
     "socket.io": "^4.4.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "sass": "^1.49.0",
+    "vite-preset-react": "^2.2.0"
   }
 }

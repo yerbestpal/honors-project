@@ -2,8 +2,9 @@ const {addUser, getAllUsers, removeUser} = require('./utils')
 
 const express = require('express')
 const http = require('http')
-const socketio = require('socket.io')
+const { Server } = require('socket.io')
 const cors = require('cors')
+const ws = require('ws')
 
 const PORT = process.env.PORT || 3000
 
@@ -11,7 +12,7 @@ const app = express()
 app.use(cors())
 
 const server = http.createServer(app)
-const io = socketio(server, { wsEngine: 'ws' })
+const io = new Server(server, { wsEngine: ws.Server })
 io.on('connection', socket => {
   socket.on('join', data => {
     const { name, room } = data
