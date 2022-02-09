@@ -1,14 +1,17 @@
-import { BrowserRouter, Route, Router } from "react-router-dom"
-import { Form, Chat } from "./components"
-import "./App.scss"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Form from './components/Form'
+import Chat from './components/Chat'
+// import "./App.scss"
 
 const App = () => {
-  <BrowserRouter>
+  return (
     <Router>
-      <Route path='/' element={Form} />
-      <Route path='/chat' element={Chat} />
+      <Routes>
+        <Route path='/' element={<Form/>} />
+        <Route path='/chat' element={<Chat/>} />
+      </Routes>
     </Router>
-  </BrowserRouter>
+  )
 }
 
 export default App

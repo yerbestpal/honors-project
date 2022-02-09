@@ -5,10 +5,10 @@ const addUser = ({ id, name, room }) => {
   room = room.trim().toLowerCase()
 
   const userExists = users.find(user => user.name === name && user.room === room)
+  const user = { id, name, room }
 
   if (!user || !room || userExists) return { error: 'error' }
 
-  const user = { id, name, room }
   users = [...users, user]
 
   return { user }
