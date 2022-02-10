@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
 
-const Form = () => {
+const Login = () => {
   const { register, handleSubmit } = useForm()
   const navigate = useNavigate()
 
@@ -18,4 +18,4 @@ const Form = () => {
   )
 }
 
-export default Form
+export default Login

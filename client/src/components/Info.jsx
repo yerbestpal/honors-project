@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom"
+import { Navbar, Container, Nav, Col } from 'react-bootstrap'
 
 const Info = ({ room, users }) => {
   return (
-    <section className="chat-info">
-      <header>
-        <h2>{room}</h2>
-      </header>
-      <ul>
-        {Array(users).map((user, i) => (
+    <section as="Col" className="chat-info p-5">
+    <h5>Users</h5>
+      <ul className="list-unstyled">
+        {users.map((user, i) => (
           <li key={i}>{user.name}</li>
         ))}
       </ul>

@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form'
 import ScrollToBottom from 'react-scroll-to-bottom'
+import { Card } from 'react-bootstrap'
 
 const ChatView = ({ messages, name, room, socket }) => {
   const { register, handleSubmit, reset } = useForm()
@@ -14,16 +15,19 @@ const ChatView = ({ messages, name, room, socket }) => {
     <section className='chat-view'>
       <ScrollToBottom className='messages'>
         {messages.map((message, i) => (
-          <li key={i}>
-            <span>{message.user}</span>
-            <p>{message.text}</p>
-          </li>
+          <Card key={i} 
+                bg={message.user === String(name).toLowerCase() ? 'primary' : 'light'}
+                text={message.user === String(name).toLowerCase() ? 'light' : 'dark'}
+                >
+            <Card.Header as="h5">{message.user}</Card.Header>
+            <Card.Body>
+              <Card.Text>
+                {message.text}
+              </Card.Text>
+            </Card.Body>
+          </Card>
         ))}
       </ScrollToBottom>
-      <form onSubmit={handleSubmit(sendMessage)}>
-        <input type='text' {...register('message', { required: true })} />
-        <button type='submit'>Send</button>
-      </form>
     </section>
   )
 }

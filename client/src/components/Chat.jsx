@@ -5,8 +5,9 @@ import { END_POINT } from '../Constants'
 import Info from './Info'
 import ChatView from './ChatView'
 import { useForm } from 'react-hook-form'
-import ScrollToBottom from 'react-scroll-to-bottom'
 import queryString from "query-string"
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Navbar, Container, Nav, Col, Row, Button, Form, InputGroup, FormControl } from 'react-bootstrap'
 
 let socket
 
@@ -26,18 +27,16 @@ const Chat = () => {
 
     socket = io(END_POINT)
 
-    socket.on('welcome', data => {
-      console.log('Message: ', data)
-    })
-
     socket.onAny((event, ...args) => console.log(event, args))
 
     setName(name)
     setRoom(room)
 
     socket.emit('join', { name, room })
+
     return () => {
-      socket.emit('left')
+      // socket.emit('disconnect')
+      socket.close()
       socket.off()
     }
   }, [END_POINT, location.search])
@@ -49,32 +48,47 @@ const Chat = () => {
 
   const { register, handleSubmit, reset } = useForm()
 
-  const sendMessage = () => {
-    console.log(message)
-    message && socket.emit('send-message', message)
-    socket.onAny((event, ...args) => console.log(event, args))
+  const sendMessage = (input) => {
+    input && socket.emit('send-message', input.message)
     reset()
   }
 
   return (
     <main className="chat">
-      <Info room={room} users={users} />
-      {/* <ChatView messages={messages} name={name} room={room} socket={socket} /> */}
-
-      <section className='chat-view'>
-        <ScrollToBottom className='messages'>
-          {messages.map((message, i) => (
-            <li key={i}>
-              <span>{message.user}</span>
-              <p>{message.text}</p>
-            </li>
-          ))}
-        </ScrollToBottom>
-        <form onSubmit={handleSubmit(sendMessage)}>
-          <input type='text' {...register('message', { required: true })} />
-          <button type='submit'>Send</button>
-        </form>
-      </section>
+      <Navbar bg="primary" variant="dark">
+        <Container>
+          <Navbar.Brand href="/"><span className="fw-bold">Room: </span>{room}</Navbar.Brand>
+          <Nav className="me-auto">
+          </Nav>
+        </Container>
+      </Navbar>
+        <Row className="min-vh-100">
+          <Col className="col-md-3 bg-info bg-gradient">
+            <Info room={room} users={users} />
+          </Col>
+          <Col className="col-md-9 p-5">
+            <Row>
+              <ChatView messages={messages} name={name} room={room} socket={socket} />
+            </Row>
+            <Row className="pt-5 d-flex">
+              <Form onSubmit={handleSubmit(sendMessage)}>
+                <InputGroup className="mb-3">
+                  <FormControl type="text"
+                    placeholder="Enter a message"
+                    aria-label="Enter a message"
+                    aria-describedby="basic-addon2"
+                    {...register('message', { required: true })}
+                  />
+                  <Button variant="outline-secondary" id="button-addon2" type="submit">
+                    Send
+                  </Button>
+                </InputGroup>
+                {/* <input type='text' {...register('message', { required: true })} />
+                <Button type='submit'>Send</Button> */}
+              </Form>
+            </Row>
+          </Col>
+        </Row>
     </main>
   )
 }

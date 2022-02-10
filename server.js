@@ -5,7 +5,7 @@ const socketIo = require('socket.io')
 const cors = require('cors')
 const ws = require('ws')
 
-const {addUser, getAllUsers, removeUser} = require('./utils')
+const { addUser, getAllUsers, removeUser, getUser } = require('./utils')
 const PORT = process.env.PORT || 4001
 
 
@@ -27,9 +27,8 @@ app.get('/', (req, res) => res.send('Server connection successful'))
 io.on('connection', socket => {
   console.log('Client is connected')
 
-  socket.emit('welcome', 'hello and welcome to the server')
-
   socket.on('join', data => {
+    console.log('joined')
     const { name, room } = data
     const { user, error } = addUser({ id: socket.id, name, room })
 
@@ -52,18 +51,10 @@ io.on('connection', socket => {
       users: getAllUsers(user.room)
     })
   })
-  
-  socket.on('disconnect', () => {
-    const user = removeUser(socket.id)
 
-    user && io.to(user.room).emit('message', {
-      user: 'admin',
-      texr: `${user.name} has just left.`
-    })
-  })
-
-  socket.on('send-message', async (message, callback) => {
-    const user = await getUser(socket.id)
+  socket.on('send-message', message => {
+    const user = getUser(socket.id)
+    console.log('user: ', user)
 
     try {
       io.to(user.room).emit('message', {
@@ -75,10 +66,20 @@ io.on('connection', socket => {
         room: user.room,
         users: getAllUsers(user.room)
       })
-      callback()
     } catch (error) {
       console.log(error.message)
     }
+  })
+    
+  socket.on('disconnect', () => {
+    console.log('disconnected')
+
+    const user = removeUser(socket.id)
+
+    user && io.to(user.room).emit('message', {
+      user: 'admin',
+      text: `${user.name} has just left.`
+    })
   })
 })
 
