@@ -44,6 +44,7 @@ const Chat = () => {
   useEffect(() => {
     socket.on('message', message => setMessages([...messages, message]))
     socket.on('room-data', ({ users }) => setUsers(users))
+    console.log('MESSAGES', messages)
   }, [])
 
   const { register, handleSubmit, reset } = useForm()

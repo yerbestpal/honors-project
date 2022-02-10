@@ -18,6 +18,7 @@ const ChatView = ({ messages, name, room, socket }) => {
           <Card key={i} 
                 bg={message.user === String(name).toLowerCase() ? 'primary' : 'light'}
                 text={message.user === String(name).toLowerCase() ? 'light' : 'dark'}
+                className='mb-3'
                 >
             <Card.Header as="h5">{message.user}</Card.Header>
             <Card.Body>
