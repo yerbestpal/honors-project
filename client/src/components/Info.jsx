@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Navbar, Container, Nav, Col } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 
 const Info = ({ room, users }) => {
   return (
@@ -12,7 +12,7 @@ const Info = ({ room, users }) => {
       </ul>
       <footer>
         <Link to='/'>
-          <button>Leave</button>
+          <Button className="btn-warning">Leave</Button>
         </Link>
       </footer>
     </section>
