@@ -7,7 +7,15 @@ import ChatView from './ChatView'
 import { useForm } from 'react-hook-form'
 import queryString from "query-string"
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Navbar, Container, Nav, Col, Row, Button, Form, InputGroup, FormControl } from 'react-bootstrap'
+import NavBar from './NavBar/NavBar'
+import {
+  Col,
+  Row,
+  Button,
+  Form,
+  InputGroup,
+  FormControl
+} from 'react-bootstrap'
 
 let socket
 
@@ -18,6 +26,8 @@ const Chat = () => {
   const [message, setMessage] = useState('')
   const [messages, setMessages] = useState([])
   const location = useLocation()
+
+  console.log('MESSAGES', messages)
 
   useEffect(() => {
     // const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -35,16 +45,19 @@ const Chat = () => {
     socket.emit('join', { name, room })
 
     return () => {
-      // socket.emit('disconnect')
       socket.close()
       socket.off()
     }
   }, [END_POINT, location.search])
 
   useEffect(() => {
-    socket.on('message', message => setMessages([...messages, message]))
+    console.log('GOT HERE')
+    const newMessages = messages
+    socket.on('message', message => {
+      newMessages.push(message)
+      setMessages(newMessages)
+    })
     socket.on('room-data', ({ users }) => setUsers(users))
-    console.log('MESSAGES', messages)
   }, [])
 
   const { register, handleSubmit, reset } = useForm()
@@ -56,13 +69,7 @@ const Chat = () => {
 
   return (
     <main className="chat">
-      <Navbar bg="primary" variant="dark">
-        <Container>
-          <Navbar.Brand href="/"><span className="fw-bold">Room: </span>{room}</Navbar.Brand>
-          <Nav className="me-auto">
-          </Nav>
-        </Container>
-      </Navbar>
+        <NavBar room={room} />
         <Row className="min-vh-100">
           <Col className="col-md-3 bg-info bg-gradient">
             <Info room={room} users={users} />
