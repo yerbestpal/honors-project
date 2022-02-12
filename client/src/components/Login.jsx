@@ -33,8 +33,6 @@ const Login = () => {
             Join
           </Button>
         </InputGroup>
-        {/* <input type='text' {...register('message', { required: true })} />
-        <Button type='submit'>Send</Button> */}
       </Form>
     </main>
   )
