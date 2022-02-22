@@ -1,22 +1,26 @@
 import { useForm } from 'react-hook-form'
 import ScrollToBottom from 'react-scroll-to-bottom'
 import { Card, Row } from 'react-bootstrap'
+import { css } from '@emotion/css'
+import { useEffect } from 'react'
 
-const ChatView = ({ messages, name, room, socket }) => {
-  const { register, handleSubmit, reset } = useForm()
+let messageContainer
+let scrollToBottomCss
 
-  const sendMessage = ({ message }) => {
-    message && socket.emit('send-message', message)
-    socket.onAny((event, ...args) => console.log(event, args))
-    reset()
-  }
+const Messages = ({ messages, name }) => {
+  useEffect(() => {
+    messageContainer = document.getElementById('message-container')
+    scrollToBottomCss = css({
+      height: messageContainer.offsetHeight
+    })
+  }, [messageContainer])
 
   return (
     <section className='chat-view'>
-      <ScrollToBottom className='messages'>
+      <ScrollToBottom className={scrollToBottomCss}>
         {messages.map((message, i) => (
           <Row key={i}
-               className={message.user === String(name).toLowerCase() ? 'p-0 m-0 col-12 mb-3' : 'p-0 m-0 col-12 mb-3'}>
+               className={message.user === String(name).toLowerCase() ? 'px-3 m-0 col-12 mb-3' : 'px-3 m-0 col-12 mb-3'}>
             <Card bg={message.user === String(name).toLowerCase() ? 'primary' : 'light'}
                   text={message.user === String(name).toLowerCase() ? 'light' : 'dark'}
                   className={message.user === String(name).toLowerCase() ? 'p-0 m-0 mb-3 float-end' : 'p-0 m-0 mb-3 float-start'}
@@ -35,4 +39,4 @@ const ChatView = ({ messages, name, room, socket }) => {
   )
 }
 
-export default ChatView
+export default Messages
