@@ -4,7 +4,7 @@ const { createServer } = require('http')
 const socketIo = require('socket.io')
 const cors = require('cors')
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./models/users')
-const { getAllRoomMessages } = require('./models/messages')
+const { getAllRoomMessages, createMessage } = require('./models/messages')
 
 const PORT = process.env.PORT || 4001
 
@@ -26,13 +26,14 @@ app.get('/', (req, res) => res.send('Server connection successful'))
 io.on('connection', socket => {
   console.log('Client is connected')
 
-  socket.on('join', data => {
+  socket.on('join', async data => {
     console.log('joined')
     const { name, room } = data
     const { error, user } = addUser({ id: socket.id, name, room })
     if (error) return
 
-    const existingMessages = getAllRoomMessages(user.room)
+    const existingMessages = await getAllRoomMessages(room)
+    console.log('existingMessages: ', existingMessages)
 
     socket.emit('load-existing-messages', {
       messages: existingMessages
@@ -41,7 +42,8 @@ io.on('connection', socket => {
     socket.emit('message', {
       user: 'admin',
       text: `${user.name}, welcome.`,
-      room: user.room
+      room: user.room,
+      date: Date.now()
     })
 
     socket.broadcast.to(user.room).emit('message', {
@@ -60,13 +62,16 @@ io.on('connection', socket => {
   socket.on('send-message', message => {
     const user = getUser(socket.id)
     console.log('user: ', user)
+    const msg = {
+      user: user.name,
+      text: message,
+      room: user.room,
+      date: Date.now()
+    }
+    createMessage(msg)
 
     try {
-      io.to(user.room).emit('message', {
-        user: user.name,
-        text: message,
-        room: user.room
-      })
+      io.to(user.room).emit('message', msg)
   
       const users = getUsersInRoom(user.room)
       io.to(user.room).emit('room-data', {
@@ -86,7 +91,8 @@ io.on('connection', socket => {
     io.to(user.room).emit('message', {
       user: 'admin',
       text: `${user.name} has just left.`,
-      room: user.room
+      room: user.room,
+      date: Date.now()
     })
   })
 })

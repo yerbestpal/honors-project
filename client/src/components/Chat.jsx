@@ -49,10 +49,14 @@ const Chat = () => {
   }, [END_POINT, location.search])
 
   useEffect(() => {
-    socket.on('load-existing-messages', ({ data }) => {
-      if (data) {
-        console.log('Data: ', data)
-        setMessages(data)
+    const existingMessages = messages
+    socket.on('load-existing-messages', messages => {
+      if (messages) {
+        messages['messages'].forEach(message => {
+          existingMessages.push(message)
+        })
+        console.log('Data: ', messages['messages'])
+        setMessages(existingMessages)
       }
     })
 

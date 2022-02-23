@@ -1,4 +1,4 @@
-// This file is not actually a 'model', sicne it is not a class.
+// This file is not actually a 'model', since it is not a class.
 // instead, it is used to manage users within a session.
 
 let users = []
