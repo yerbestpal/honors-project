@@ -4,6 +4,7 @@ const { createServer } = require('http')
 const socketIo = require('socket.io')
 const cors = require('cors')
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./models/users')
+const { getAllRoomMessages } = require('./models/messages')
 
 const PORT = process.env.PORT || 4001
 
@@ -31,9 +32,16 @@ io.on('connection', socket => {
     const { error, user } = addUser({ id: socket.id, name, room })
     if (error) return
 
+    const existingMessages = getAllRoomMessages(user.room)
+
+    socket.emit('load-existing-messages', {
+      messages: existingMessages
+    })
+
     socket.emit('message', {
       user: 'admin',
-      text: `${user.name}, welcome.`
+      text: `${user.name}, welcome.`,
+      room: user.room
     })
 
     socket.broadcast.to(user.room).emit('message', {
@@ -56,7 +64,8 @@ io.on('connection', socket => {
     try {
       io.to(user.room).emit('message', {
         user: user.name,
-        text: message
+        text: message,
+        room: user.room
       })
   
       const users = getUsersInRoom(user.room)
@@ -76,7 +85,8 @@ io.on('connection', socket => {
 
     io.to(user.room).emit('message', {
       user: 'admin',
-      text: `${user.name} has just left.`
+      text: `${user.name} has just left.`,
+      room: user.room
     })
   })
 })

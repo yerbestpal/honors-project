@@ -8,7 +8,6 @@ import { useForm } from 'react-hook-form'
 import queryString from "query-string"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import NavBar from './NavBar/NavBar'
-import { css } from '@emotion/css'
 import {
   Col,
   Row,
@@ -50,6 +49,13 @@ const Chat = () => {
   }, [END_POINT, location.search])
 
   useEffect(() => {
+    socket.on('load-existing-messages', ({ data }) => {
+      if (data) {
+        console.log('Data: ', data)
+        setMessages(data)
+      }
+    })
+
     const newMessages = messages
     socket.on('message', message => {
       newMessages.push(message)
@@ -90,8 +96,6 @@ const Chat = () => {
                       Send
                     </Button>
                   </InputGroup>
-                  {/* <input type='text' {...register('message', { required: true })} />
-                  <Button type='submit'>Send</Button> */}
                 </Form>
               </Row>
             </Col>
