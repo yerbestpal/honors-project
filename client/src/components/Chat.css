@@ -1,0 +1,4 @@
+#message-container {
+  height: -webkit-calc(100vh - 500px);
+  height: calc(100vh - 270px);
+}

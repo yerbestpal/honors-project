@@ -7,6 +7,7 @@ import Messages from './Messages'
 import { useForm } from 'react-hook-form'
 import queryString from "query-string"
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './Chat.css'
 import NavBar from './NavBar/NavBar'
 import {
   Col,
