@@ -53,7 +53,7 @@ const convertSentimentToEmoji = (sentimentScore) => {
   }
 }
 
-const PORT = process.env.PORT || 4001
+const PORT = process.env.PORT || 80
 
 const httpServer = createServer(app)
 const io = socketIo(httpServer, {
