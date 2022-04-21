@@ -29,7 +29,7 @@ const Messages = ({ messages, name }) => {
                 <Card.Text>
                   {message.text}
                 </Card.Text>
-                <footer className='fs-1'>
+                <footer className={message.user === 'admin' ? 'visually-hidden' : 'fs-1'}>
                   {message.emoji}
                   <br/>
                   <span className='fs-5 font-weight-bold'>Sentiment: {message.sentiment}</span>
