@@ -58,7 +58,7 @@ const PORT = process.env.PORT || 4001
 const httpServer = createServer(app)
 const io = socketIo(httpServer, {
   cors: {
-    origin: '*',
+    origin: 'https://honors-project-server.vercel.app',
     methods: ['PUT', 'GET', 'POST', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['secretHeader'],
     credentials: true,

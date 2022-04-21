@@ -34,7 +34,14 @@ const Chat = () => {
     // })
     let { name, room } = queryString.parse(location.search)
 
-    socket = io(END_POINT)
+    socket = io(END_POINT, {
+      cors: {
+        withCredentials: true,
+        extraHeaders: {
+          secretHeader: 'abcd',
+        },
+      },
+    })
 
     socket.onAny((event, ...args) => console.log(event, args))
 
