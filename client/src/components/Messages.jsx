@@ -29,6 +29,11 @@ const Messages = ({ messages, name }) => {
                 <Card.Text>
                   {message.text}
                 </Card.Text>
+                <footer className='fs-1'>
+                  {message.emoji}
+                  <br/>
+                  <span className='fs-5 font-weight-bold'>Sentiment: {message.sentiment}</span>
+                </footer>
               </Card.Body>
             </Card>
           </Row>

@@ -14,6 +14,7 @@
     "@seald-io/nedb": "^3.0.0-6",
     "cors": "^2.8.5",
     "express": "^4.17.2",
+    "nrc-sentiment": "github:jeremylind/nrc-sentiment",
     "socket.io": "^4.4.1"
   },
   "devDependencies": {

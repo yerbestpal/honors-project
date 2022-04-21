@@ -4,19 +4,25 @@
 const path = require('path')
 const Datastore = require('@seald-io/nedb')
 const { rejects } = require('assert')
-const db = new Datastore({ filename: path.join(__dirname) + '../../databases/messages.db', autoload: true })
+const db = new Datastore({
+  filename: path.join(__dirname) + '../../databases/messages.db',
+  autoload: true,
+})
 
-const getAllRoomMessages = room => {
-    return db.findAsync({ room: room }).sort({ date: 1 })
+const getAllRoomMessages = (room) => {
+  return db
+    .findAsync({ room: room })
+    .sort({ date: 1 })
     .then((result) => {
-      console.log(result)
+      // console.log(result)
       return result
-    }).catch((err) => {
+    })
+    .catch((err) => {
       console.log(err.message)
     })
 }
 
-const createMessage = async message => {
+const createMessage = async (message) => {
   const msg = await db.insertAsync(message)
   return msg
 }

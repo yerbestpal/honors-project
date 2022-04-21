@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react'
 import io from 'socket.io-client'
-import { useLocation } from "react-router-dom"
+import { useLocation } from 'react-router-dom'
 import { END_POINT } from '../Constants'
 import Info from './Info'
 import Messages from './Messages'
 import { useForm } from 'react-hook-form'
-import queryString from "query-string"
+import queryString from 'query-string'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './Chat.css'
 import NavBar from './NavBar/NavBar'
@@ -15,14 +15,14 @@ import {
   Button,
   Form,
   InputGroup,
-  FormControl
+  FormControl,
 } from 'react-bootstrap'
 
 let socket
 
 const Chat = () => {
   const [name, setName] = useState('')
-	const [room, setRoom] = useState('')
+  const [room, setRoom] = useState('')
   const [users, setUsers] = useState([])
   const [message, setMessage] = useState('')
   const [messages, setMessages] = useState([])
@@ -51,9 +51,9 @@ const Chat = () => {
 
   useEffect(() => {
     const existingMessages = messages
-    socket.on('load-existing-messages', messages => {
+    socket.on('load-existing-messages', (messages) => {
       if (messages) {
-        messages['messages'].forEach(message => {
+        messages['messages'].forEach((message) => {
           existingMessages.push(message)
         })
         console.log('Data: ', messages['messages'])
@@ -62,7 +62,7 @@ const Chat = () => {
     })
 
     const newMessages = messages
-    socket.on('message', message => {
+    socket.on('message', (message) => {
       newMessages.push(message)
       setMessages(newMessages)
     })
@@ -79,32 +79,42 @@ const Chat = () => {
   return (
     <div>
       <NavBar room={room} />
-      <main className="chat">
-          <Row id="message-container">
-            <Col className="col-md-3 bg-info bg-gradient">
-              <Info room={room} users={users} />
-            </Col>
-            <Col className={"col-md-9 p-5"}>
-              <Row>
-                <Messages messages={messages} name={name} room={room} socket={socket} />
-              </Row>
-              <Row className={"pt-5 d-flex"}>
-                <Form onSubmit={handleSubmit(sendMessage)}>
-                  <InputGroup className="mb-3">
-                    <FormControl type="text"
-                      placeholder="Enter a message"
-                      aria-label="Enter a message"
-                      aria-describedby="basic-addon2"
-                      {...register('message', { required: true })}
-                    />
-                    <Button variant="outline-secondary" id="button-addon2" type="submit">
-                      Send
-                    </Button>
-                  </InputGroup>
-                </Form>
-              </Row>
-            </Col>
-          </Row>
+      <main className='chat'>
+        <Row id='message-container'>
+          <Col className='col-md-3 bg-info bg-gradient'>
+            <Info room={room} users={users} />
+          </Col>
+          <Col className={'col-md-9 p-5'}>
+            <Row>
+              <Messages
+                messages={messages}
+                name={name}
+                room={room}
+                socket={socket}
+              />
+            </Row>
+            <Row className={'pt-5 d-flex'}>
+              <Form onSubmit={handleSubmit(sendMessage)}>
+                <InputGroup className='mb-3'>
+                  <FormControl
+                    type='text'
+                    placeholder='Enter a message'
+                    aria-label='Enter a message'
+                    aria-describedby='basic-addon2'
+                    {...register('message', { required: true })}
+                  />
+                  <Button
+                    variant='outline-secondary'
+                    id='button-addon2'
+                    type='submit'
+                  >
+                    Send
+                  </Button>
+                </InputGroup>
+              </Form>
+            </Row>
+          </Col>
+        </Row>
       </main>
     </div>
   )

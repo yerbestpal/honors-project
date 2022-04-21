@@ -1,6 +1,69 @@
-{"user":"ross","text":"hello world again","room":"baws","date":1645586840918,"_id":"BjINV7XjekYtLf0C"}
-{"user":"ross","text":"test message","room":"baws","date":1645585433561,"_id":"FzEElABGlruK50kz"}
-{"user":"ross","text":"How are you?","room":"baws","date":1649832257387,"_id":"O6LDiV6MHNAPuCnI"}
-{"user":"jimmie jones","text":"Hello Ross!","room":"baws","date":1645587007325,"_id":"UyApySff92AdMo8L"}
-{"user":"ross","text":"Hey Jimmie","room":"baws","date":1649832252052,"_id":"o92Inwm6NWJ1YiBC"}
-{"user":"ross","text":"Hello?","room":"baws","date":1649837698158,"_id":"d5icgiaJINwtijc2"}
+{"user":"ross","text":"test","room":"baws","date":1650498159701,"emoji":[],"_id":"2Frrkp98h70dRU1U"}
+{"user":"ross","text":"upset upset upset upset upset upset upset upset","room":"baws","date":1650499928144,"emoji":["🤬","🤬","☹️","🤬","👎","☹️"],"sentiment":"👎👎👎👎👎","_id":"3fsQdHz7jy6RPo31"}
+{"user":"ross","text":"upset upset","room":"baws","date":1650487212066,"emoji":["👎","☹️","🤬","👎","☹️","🤬"],"_id":"4tG0rfrZLwoPVt94"}
+{"user":"ross","text":"test","room":"baws","date":1650497925045,"emoji":[],"sentiment":0,"_id":"5DleEZetJSRYoBka"}
+{"user":"ross","text":"upset","room":"baws","date":1650499864382,"emoji":["🤬","👎","☹️"],"sentiment":"👎","_id":"6StLib7ZsxTZjdua"}
+{"user":"ross","text":"happy","room":"baws","date":1650493443676,"emoji":["🫦","😁","👍","🤝"],"_id":"6k0p1NJe51fevV2c"}
+{"user":"ross","text":"joy","room":"baws","date":1650486720471,"emoji":["🤝","👍","😁"," / "],"_id":"6u0qyz9BwSO6ORxT"}
+{"user":"ross","text":"upset joy upset joy","room":"baws","date":1650490162736,"emoji":[" - ","👎","☹️","🤬"," - ","🤝","👍","😁"],"_id":"8sIaY0RSB9oAuxrG"}
+{"user":"ross","text":"urgent expect","room":"baws","date":1650485348504,"emoji":["😱","👎","🫢","🫦","🤝","🫢","👍","🫦"],"_id":"9ulFDyHcXMIdk9w4"}
+{"user":"ross","text":"sad","room":"baws","date":1650493455624,"emoji":[],"_id":"9x0vusoQVuJSaEl1"}
+{"user":"ross","text":"sdfgh","room":"baws","date":1650498094252,"emoji":[],"sentiment":1,"_id":"A5bID1naZxaIodV3"}
+{"user":"ross","text":"upset joy","room":"baws","date":1650486723891,"emoji":["👎","☹️","🤬"," / ","🤝","👍","😁"," / "],"_id":"AAnWN5dsfCBklAXG"}
+{"user":"ross","text":"hello","room":"baws","date":1650497949815,"emoji":[],"sentiment":"😐","_id":"AGPUvTC0lOhNpaqW"}
+{"user":"ross","text":"test","room":"baws","date":1650490316803,"emoji":[],"_id":"BD3fv5CneCnFyxJw"}
+{"user":"ross","text":"upset upset","room":"baws","date":1650499868086,"emoji":["🤬","👎","☹️"],"sentiment":"👎👎","_id":"C1ZDNLIL5onC54Pd"}
+{"user":"ross","text":"I'm very happy","room":"baws","date":1650498350781,"emoji":["🫦","😁","👍","🤝"],"sentiment":"👍","_id":"CYWx8OglQ1h5TnLw"}
+{"user":"ross","text":"upset","room":"baws","date":1650486696558,"emoji":["👎","☹️","🤬"," / "],"_id":"CnSiJkrAf3jU9seh"}
+{"user":"ross","text":"happy happy happy happy happy happy","room":"baws","date":1650499562572,"emoji":[" - "," - "," - ","👍"," - ","🫦","😁","👍","🤝"],"sentiment":"👍👍👍👍👍👍","_id":"EtJunoHnbqhET9uq"}
+{"user":"ross","text":"happy happy happy happy happy happy","room":"baws","date":1650499671439,"emoji":[" - "," - "," - ","👍"," - ","🫦","😁","👍","🤝"],"sentiment":"👍👍👍👍👍","_id":"EzI65pePFLPLONmy"}
+{"user":"ross","text":"Angry","room":"baws","date":1650490321863,"emoji":[],"_id":"FBQafulagSwTzRCa"}
+{"user":"ross","text":"test","room":"baws","date":1650497789975,"emoji":[],"_id":"FdfV77ROMnk3opue"}
+{"user":"ross","text":"angry","room":"baws","date":1650487203882,"emoji":[],"_id":"GIXLhOM6viITLQQv"}
+{"user":"ross","text":"upset","room":"baws","date":1650487206295,"emoji":["👎","☹️","🤬"],"_id":"Gy5ImDdo2Ey4KHPY"}
+{"user":"ross","text":"upset happy","room":"baws","date":1650486715571,"emoji":["👎","☹️","🤬"," / "," / "],"_id":"IZG5rLNKTM7DHrR4"}
+{"user":"ross","text":"upset upset","room":"baws","date":1650499931629,"emoji":["🤬","👎","☹️"],"sentiment":"👎👎","_id":"JvEAonqnjhx2MLZA"}
+{"user":"ross","text":"upset joy upset joy","room":"baws","date":1650489140960,"emoji":[" - "," - ","👎","☹️","🤬"," - ","🤝","👍","😁"],"_id":"Kigcp5ayov2Zhhc0"}
+{"user":"ross","text":"disgust","room":"baws","date":1650485609758,"emoji":["😱 - ","👎 - ","☹️ - ","🤬 - ","🤢 - "],"_id":"LCGUoDr2aeUjbjaG"}
+{"user":"ross","text":"upset joy","room":"baws","date":1650487249016,"emoji":["👎","☹️","🤬"," - ","🤝","👍","😁"," - "],"_id":"LvhlSZYa3sGXEE1v"}
+{"user":"ross","text":"upset joy upset","room":"baws","date":1650489124371,"emoji":[" - ","🤝","👍","😁"," - ","👎","☹️","🤬"],"_id":"M0ENHGQbJ0VAlw00"}
+{"user":"ross","text":"excellent","room":"baws","date":1650498499049,"emoji":["😁","👍","🤝"],"sentiment":"👍","_id":"M3Wk55g4Dydlaoij"}
+{"user":"ross","text":"angry","room":"baws","date":1650493471400,"emoji":["🤬","🤢","👎"],"_id":"MdRhUxczXghzrfFh"}
+{"user":"ross","text":"sad sad sad sad sad sad","room":"baws","date":1650499679437,"emoji":[],"sentiment":"😐","_id":"NCfYVk5ynXVaSHBW"}
+{"user":"ross","text":"upset joy","room":"baws","date":1650486760859,"emoji":["👎","☹️","🤬"," - ","🤝","👍","😁"," - "],"_id":"OyCG1jYNmxsmHwR6"}
+{"user":"ross","text":"angry upset","room":"baws","date":1650493494790,"emoji":["🤢"," - ","🤬","👎","☹️"],"_id":"Pa61Qf7pLd8qaCJk"}
+{"user":"ross","text":"upset upset","room":"baws","date":1650489117560,"emoji":[" - ","👎","☹️","🤬"],"_id":"PePAmkMfBMTrzBDw"}
+{"user":"ross","text":"angry happy","room":"baws","date":1650486680425,"emoji":[" / "," / "],"_id":"PmSxIAl6H1QNQUTb"}
+{"user":"ross","text":"upset upset upset","room":"baws","date":1650500113786,"emoji":["🤬","👎","☹️"],"sentiment":"👎👎👎","_id":"QnM6AnthFBcPh7pm"}
+{"user":"ross","text":"angry","room":"baws","date":1650496423684,"emoji":["🤬","😖","👎"],"_id":"RIJ29OZjnTPUFcPt"}
+{"user":"ross","text":"test","room":"baws","date":1650497833314,"emoji":[],"_id":"TPzjwdlZ79hiwgaT"}
+{"user":"ross","text":"love love love","room":"baws","date":1650485549531,"emoji":["🤝 - ","☹️ - ","🫢 - ","👍 - ","😁 - ","🫦 - ","🤝 - ","☹️ - ","🫢 - ","👍 - ","😁 - ","🫦 - ","🤝 - ","☹️ - ","🫢 - ","👍 - ","😁 - ","🫦 - "],"_id":"TysZr3DzyvmyGqYz"}
+{"user":"ross","text":"upset joy","room":"baws","date":1650487316652,"emoji":["👎","☹️","🤬"," - ","🤝","👍","😁"],"_id":"VouLt2QrG1oSXpZ0"}
+{"user":"ross","text":"very urgent","room":"baws","date":1650485238195,"emoji":["😱","👎","🫢","🫦"],"_id":"ZJyolxJtHT9rIp0Z"}
+{"user":"ross","text":"angry","room":"baws","date":1650490319628,"emoji":[],"_id":"ZVbzafSEzTz5m3sd"}
+{"user":"ross","text":"happy happy happy happy happy happy happy happy happy","room":"baws","date":1650499572236,"emoji":[" - "," - "," - "," - "," - "," - ","👍"," - ","🫦","😁","👍","🤝"],"sentiment":"👍👍👍👍👍👍👍👍👍","_id":"azKRPkI1J25Yom2E"}
+{"user":"ross","text":"upset upset","room":"baws","date":1650500110149,"emoji":["🤬","👎","☹️"],"sentiment":"👎👎","_id":"bOubHZY8Qcgy55eU"}
+{"user":"ross","text":"upset upset upset","room":"baws","date":1650499875918,"emoji":["☹️","🤬","👎","☹️"],"sentiment":"👎👎👎","_id":"chiCNnjhaT3Vh6VD"}
+{"user":"ross","text":"happy happy","room":"baws","date":1650498369354,"emoji":["🫦","😁","👍","🤝"],"sentiment":"👍👍","_id":"d23y1MdIB62n9Nl4"}
+{"user":"ross","text":"urgent","room":"baws","date":1650485220887,"emoji":["😱","👎","🫢","🫦"],"_id":"dBBotuHGYbKfSVof"}
+{"user":"ross","text":"happy happy happy happy happy happy","room":"baws","date":1650499554063,"emoji":[" - "," - "," - ","👍"," - ","🫦","😁","👍","🤝"],"sentiment":"👍👍👍👍👍👍","_id":"djK7XnUWiJIVwdw1"}
+{"user":"ross","text":"upset upset upset upset upset upset upset upset","room":"baws","date":1650499691715,"emoji":[" - "," - "," - "," - "," - ","☹️"," - ","🤬","👎","☹️"],"sentiment":"👎👎👎👎👎","_id":"dz9MlWa4EsHlmVYb"}
+{"user":"ross","text":"angry sad","room":"baws","date":1650493487862,"emoji":["🤬","🤢","👎"],"_id":"fWFZ9kaVHwwWfdgm"}
+{"user":"ross","text":"brilliant happy excellent angry","room":"baws","date":1650498510760,"emoji":["🫦","👍"," - ","😁","👍","🤝"," - ","🤬","😖","👎"],"sentiment":"👍👍","_id":"goB4Wt1USO6DFqLd"}
+{"user":"ross","text":"very","room":"baws","date":1650485235302,"emoji":[],"_id":"i6kFabcsUd7lLnHH"}
+{"user":"ross","text":"urgent expect","room":"baws","date":1650485398734,"emoji":["😱 - ","👎 - ","🫢 - ","🫦 - ","🤝 - ","🫢 - ","👍 - ","🫦 - "],"_id":"j86Y56I2R9xuTHTh"}
+{"user":"ross","text":"upset joy upset","room":"baws","date":1650489134344,"emoji":[" - ","🤝","👍","😁"," - ","👎","☹️","🤬"],"_id":"jO3jyVaLAm0R2vmV"}
+{"user":"ross","text":"upset upset upset upset upset upset upset upset","room":"baws","date":1650499847892,"emoji":["🤬","🤬","☹️","🤬","👎","☹️"],"sentiment":"👎👎👎👎👎","_id":"kOx1YBk3Pg6YTX4x"}
+{"user":"ross","text":"upset upset upset","room":"baws","date":1650499935993,"emoji":["☹️","🤬","👎","☹️"],"sentiment":"👎👎👎","_id":"nJCd7P8QaMqdgMnO"}
+{"user":"ross","text":"upset upset upset upset upset upset upset upset","room":"baws","date":1650500118337,"emoji":["🤬","👎","☹️"],"sentiment":"👎👎👎👎👎","_id":"oIOAa4cH1xVDhmNN"}
+{"user":"ross","text":"anger","room":"baws","date":1650490324163,"emoji":["👎","🤬"],"_id":"qVWuIK8YZ2YGCnDv"}
+{"user":"ross","text":"happy","room":"baws","date":1650495993598,"emoji":["🫦","😁","👍","🤝"],"_id":"rq3HsfDdq0zPiHVm"}
+{"user":"ross","text":"expect","room":"baws","date":1650485287297,"emoji":["🤝","🫢","👍","🫦"],"_id":"s6iAPKiprkyxpByk"}
+{"user":"ross","text":"burger","room":"baws","date":1650485465573,"emoji":[],"_id":"t4kwd1XcPPliXuxS"}
+{"user":"ross","text":"I would love a delicious burger.","room":"baws","date":1650485473487,"emoji":["🤝 - ","☹️ - ","🫢 - ","👍 - ","😁 - ","🫦 - "],"_id":"tUGiuucMEgGE06HY"}
+{"user":"ross","text":"Excellent happy","room":"baws","date":1650498357243,"emoji":["🫦","😁","👍","🤝"],"sentiment":"👍👍","_id":"tnboUTzgWDbjjQa7"}
+{"user":"ross","text":"distressed","room":"baws","date":1650493468343,"emoji":["😱","👎"],"_id":"vU7H3liJwJmV2uLL"}
+{"user":"ross","text":["I","am","very","angry"],"room":"baws","date":1650494452013,"emoji":["🤬","🤢","👎"],"_id":"voPQl7EJQh1j5gWM"}
+{"user":"ross","text":"upset","room":"baws","date":1650493462095,"emoji":["🤬","👎","☹️"],"_id":"xFFVrZMGMhWt8LPH"}
+{"user":"ross","text":"hello","room":"baws","date":1650490314247,"emoji":[],"_id":"xTTsX1OO1bLZ4Lkw"}
+{"user":"ross","text":"ANGRY","room":"baws","date":1650493478521,"emoji":["🤬","🤢","👎"],"_id":"zXRp3zIG8SxzNqi7"}

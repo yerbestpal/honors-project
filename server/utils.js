@@ -5,7 +5,10 @@ exports.connectToDb = (dbFilePath, DAO) => {
 
   if (dbFilePath) {
     // Embedded mode
-    DAO.db = new Datastore({ filename: path.join(__dirname) + dbFilePath, autoload: true })
+    DAO.db = new Datastore({
+      filename: path.join(__dirname) + dbFilePath,
+      autoload: true,
+    })
     console.log(`DB is connected to: ${dbFilePath}`)
   } else {
     // In-memory mode (restarts every time - useful during development)
