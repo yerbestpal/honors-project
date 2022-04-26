@@ -12,6 +12,7 @@ const {
 const { getAllRoomMessages, createMessage } = require('./models/messages')
 const sentiment = require('nrc-sentiment')
 const nrcWords = require('./models/nrc_en.json')
+const { text } = require('express')
 
 const getEmojiFromWord = (word) => {
   switch (word) {
@@ -38,18 +39,29 @@ const getEmojiFromWord = (word) => {
   }
 }
 
+// const convertSentimentToEmoji = (sentimentScore) => {
+//   switch (true) {
+//     case sentimentScore === 0:
+//       return '😐'
+//     case sentimentScore >= 5:
+//       return '👍'.repeat(5)
+//     case sentimentScore > 0:
+//       return '👍'.repeat(sentimentScore)
+//     case sentimentScore <= -5:
+//       return '👎'.repeat(5)
+//     case sentimentScore < 0:
+//       return '👎'.repeat(Math.abs(sentimentScore))
+//   }
+// }
+
 const convertSentimentToEmoji = (sentimentScore) => {
   switch (true) {
     case sentimentScore === 0:
       return '😐'
-    case sentimentScore >= 5:
-      return '👍'.repeat(5)
     case sentimentScore > 0:
-      return '👍'.repeat(sentimentScore)
-    case sentimentScore <= -5:
-      return '👎'.repeat(5)
+      return '👍'
     case sentimentScore < 0:
-      return '👎'.repeat(Math.abs(sentimentScore))
+      return '👎'
   }
 }
 
@@ -79,11 +91,134 @@ io.on('connection', (socket) => {
     if (error) return
 
     const existingMessages = await getAllRoomMessages(room)
-    // console.log('existingMessages: ', existingMessages)
 
-    socket.emit('load-existing-messages', {
-      messages: existingMessages,
-    })
+    if (existingMessages.length >= 1) {
+      console.log('existingMessages: ', existingMessages)
+      socket.emit('load-existing-messages', {
+        messages: existingMessages,
+      })
+    } else {
+      const botMessages = [
+        // Positive messages
+        {
+          user: 'bot',
+          text: '1. We are delighted that you will be coming to visit us. It will be so nice to have you here.',
+          room: user.room,
+          date: Date.now(),
+          emoji: []
+        },
+        {
+          user: 'bot',
+          text: '2. Even in hard times when I don\'t have a lot of money, I stay hopeful and believe that next month will be better.',
+          room: user.room,
+          date: Date.now(),
+          emoji: []
+        },
+        {
+          user: 'bot',
+          text: '3. Grandpa was very proud of me when I got a promotion at work. He took me out to dinner to celebrate.',
+          room: user.room,
+          date: Date.now(),
+          emoji: []
+        },
+        {
+          user: 'bot',
+          text: '4. Maggie is a fearless friend of mine. She will try anything once, no matter how dangerous the activity is.',
+          room: user.room,
+          date: Date.now(),
+          emoji: []
+        },
+        {
+          user: 'bot',
+          text: '5. Although the storm destroyed many of the buildings along the shore, we feel fortunate that our house didn\'t suffer any damage.',
+          room: user.room,
+          date: Date.now(),
+          emoji: []
+        },
+        // Negative messages
+        {
+          user: 'bot',
+          text: '6. Walking to the bank to deposit money makes me very uneasy. I\'m always scared someone is going to rob me.',
+          room: user.room,
+          date: Date.now(),
+          emoji: []
+        },
+        {
+          user: 'bot',
+          text: '7. It\'s said that children without siblings grow up to be selfish adults because they never learn to share with others.',
+          room: user.room,
+          date: Date.now(),
+          emoji: []
+        },
+        {
+          user: 'bot',
+          text: '8. I\'m a little doubtful about whether to get married or not.',
+          room: user.room,
+          date: Date.now(),
+          emoji: []
+        },
+        {
+          user: 'bot',
+          text: '9. The stubborn employee refused to accept that he made a mistake. He kept insisting that he wasn\'t wrong.',
+          room: user.room,
+          date: Date.now(),
+          emoji: []
+        },
+        {
+          user: 'bot',
+          text: '10. I am absolutely furious!! I cannot believe that my dog chewed my favorite shoes. Now they\'re ruined!',
+          room: user.room,
+          date: Date.now(),
+          emoji: []
+        },
+        // Neutral messages
+        {
+          user: 'bot',
+          text: '11. I feel okay, it\'s just another day.',
+          room: user.room,
+          date: Date.now(),
+          emoji: []
+        },
+        {
+          user: 'bot',
+          text: '12. I neither agree nor disagree with the statement.',
+          room: user.room,
+          date: Date.now(),
+          emoji: []
+        },
+        {
+          user: 'bot',
+          text: '13. The reception to the play was lukewarm to say the least.',
+          room: user.room,
+          date: Date.now(),
+          emoji: []
+        },
+        {
+          user: 'bot',
+          text: '14. I don\'t have a strong opinion, either way.',
+          room: user.room,
+          date: Date.now(),
+          emoji: []
+        },
+        {
+          user: 'bot',
+          text: '15. The weather is standard for this time of year',
+          room: user.room,
+          date: Date.now(),
+          emoji: []
+        }
+      ]
+
+      botMessages.forEach(message => {
+        getMessageEmojis(message.text, message.emoji)
+        message.emoji = [...new Set(message.emoji)]
+        message.sentiment = convertSentimentToEmoji(sentiment(message.text).score)
+      })
+
+      socket.emit('load-existing-messages', {
+        messages: botMessages,
+      })
+    }
 
     socket.emit('message', {
       user: 'admin',
@@ -108,50 +243,7 @@ io.on('connection', (socket) => {
   socket.on('send-message', (message) => {
     const messageEmoji = []
 
-    const messageToArray = message.split(' ')
-
-    console.log(sentiment("I'm very happy"))
-
-    const nrcWordsArray = []
-    Object.keys(nrcWords).forEach((key) =>
-      nrcWordsArray.push({
-        word: key,
-        emotions: nrcWords[key],
-      })
-    )
-
-    messageToArray.forEach((word) => {
-      // let wordIsPresentInGroup
-      nrcWordsArray.forEach((nrcWord) => {
-        if (word.toLowerCase().trim() === nrcWord.word.toLowerCase().trim()) {
-          // wordIsPresentInGroup = true
-          nrcWord.emotions.forEach((emotion) =>
-            messageEmoji.push(getEmojiFromWord(emotion.toLowerCase().trim()))
-          )
-        }
-      })
-      // if (wordIsPresentInGroup) {
-      //   messageEmoji.push(' - ')
-      // }
-      // !wordIsPresentInGroup
-    })
-
-    // Remove ' - ' from the end of emoji array
-    // if (messageEmoji[messageEmoji.length - 1] === ' - ') messageEmoji.pop()
-
-    // Remove duplicate emoji
-    // for (let i = 0; i < messageEmoji.length; i++) {
-    //   for (let j = 0; j < messageEmoji.length; j++) {
-    //     if (i !== j) {
-    //       if (messageEmoji[i] === messageEmoji[j]) {
-    //         messageEmoji.splice(messageEmoji.indexOf(messageEmoji[i]), 1)
-    //       }
-    //     }
-    //   }
-    // }
-
-    // Remove ' - ' from the start of emoji array
-    // if (messageEmoji[0] === ' - ') messageEmoji.shift()
+    getMessageEmojis(message, messageEmoji)
 
     const user = getUser(socket.id)
     console.log('user: ', user)
@@ -193,3 +285,26 @@ io.on('connection', (socket) => {
 })
 
 httpServer.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
+
+const getMessageEmojis = (message, messageEmoji) => {
+  const messageToArray = message.split(' ')
+
+  const nrcWordsArray = []
+  Object.keys(nrcWords).forEach((key) => nrcWordsArray.push({
+    word: key,
+    emotions: nrcWords[key],
+  })
+  )
+
+  messageToArray.forEach((word) => {
+    // let wordIsPresentInGroup
+    nrcWordsArray.forEach((nrcWord) => {
+      if (word.toLowerCase().trim() === nrcWord.word.toLowerCase().trim()) {
+        // wordIsPresentInGroup = true
+        nrcWord.emotions.forEach((emotion) => messageEmoji.push(getEmojiFromWord(emotion.toLowerCase().trim()))
+        )
+      }
+    })
+  })
+}
+

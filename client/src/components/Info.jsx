@@ -15,6 +15,20 @@ const Info = ({ room, users }) => {
           <Button className='btn-warning'>Leave</Button>
         </Link>
       </footer>
+      <br />
+      <h5>Key</h5>
+      <ul className='list-unstyled'>
+        <li>Trust: 🤝</li>
+        <li>Fear: 😱</li>
+        <li>Sadness: ☹️</li>
+        <li>Anger: 🤬</li>
+        <li>Surprise: 🫢</li>
+        <li>Disgust: 😖</li>
+        <li>Joy: 😁</li>
+        <li>Anticipation: 🫦</li>
+        <li>Positive: 👍</li>
+        <li>Negative: 👎</li>
+      </ul>
     </section>
   )
 }

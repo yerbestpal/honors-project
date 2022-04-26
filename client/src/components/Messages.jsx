@@ -30,8 +30,7 @@ const Messages = ({ messages, name }) => {
                   {message.text}
                 </Card.Text>
                 <footer className={message.user === 'admin' ? 'visually-hidden' : 'fs-1'}>
-                  <span className={message.emoji.length > 0 ? '' : 'visually-hidden'}>{message.emoji}</span>
-                  <br/>
+                  <span className={Array(message.emoji).length > 0 && message.user !== 'admin' ? '' : 'visually-hidden'}>{message.emoji}<br /></span>
                   <span className='fs-5 font-weight-bold'>Sentiment: {message.sentiment}</span>
                 </footer>
               </Card.Body>
